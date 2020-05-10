@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+        <header id="home">
+          <nav class="navbar">
+            <h1>Eventic</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#add-event">New Event</a></li>
+            </ul>
+          </nav>
+
+          <div class="welcome-event"></div>
+          
+        </header>
+        <main>
+            <section id="events">
+                <h1 class="section-title">Events</h1>
+                <div class="events-container"></div>
+            </section>
+
+            <section id="add-event">
+                <h1 class="section-title">New Event</h1>
+                <form class="form">
+                    <input type="text" id="name" placeholder="Name" required>
+                    <input type="number" id="attendee" placeholder="Attendees" required>
+                    <textarea id="description" cols="30" rows="10" placeholder="Description..." required></textarea>
+                    <select id="status" required>
+                        <option value="0">Free</option>
+                        <option value="1">Paid</option>
+                    </select><center>
+                    <input type="submit" name="submit" class="btn btn-primary" value="submit" />
+                </center>
+                </form>
+            </section>
+        </main>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyB_E8nHPMqc_Ox6cdU2E_ikQj2cnxFsfzw",
+    authDomain: "website-18fb0.firebaseapp.com",
+    databaseURL: "https://website-18fb0.firebaseio.com",
+    projectId: "website-18fb0",
+    storageBucket: "website-18fb0.appspot.com",
+    messagingSenderId: "12674300329",
+    appId: "1:12674300329:web:f1ddd1a56aafdaf7cf6cb8"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore()
+</script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
