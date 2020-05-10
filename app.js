@@ -100,7 +100,7 @@ const All_Events =(allEvents , id) =>{
         
         <div>
           <span>Attendees: ${Attendees - booked}</span>
-          <span>status : ${status ===1 ? "paid" : "free"}</span> 
+          <span>status : ${status === 1 ? "paid" : "free"}</span> 
          </div>
          <button onclick="bookEvent(${booked} ,'${id}')" class="btn btn-tertiary">Book</button>
         
@@ -110,6 +110,45 @@ const All_Events =(allEvents , id) =>{
     
 
 
+// BOOK EVENT 
 
-//BOOK EVENT    
-    
+// use local storage that 1 person can't book more then once   
+
+
+let bookedEvents = [];
+
+const bookEvent = (booked, id) => {
+
+  const getBooking = localStorage.getItem('Booking');
+
+    if (getBooking) {
+     bookedEvents = JSON.parse(localStorage.getItem('Booking'));
+
+      if(bookedEvents.includes(id)) {
+
+        alert('you have already booked this event') 
+        
+      } 
+      else {
+        saveBooking(booked, id)
+     }
+    } 
+    else {
+        saveBooking(booked, id)
+    }
+};
+
+const saveBooking = (booked, id) => {
+    bookedEvents.push(id);
+    localStorage.setItem('Booking', JSON.stringify(bookedEvents));
+
+    const data = { booked: booked +1 }
+    db.collection('events').doc(id).update(data).then(() =>{
+
+      alert('Event successfully booked')
+      window.scrollTo({top:0,behavior:'smooth'});
+
+    })
+    .catch(err => console.log(err))
+}
+
